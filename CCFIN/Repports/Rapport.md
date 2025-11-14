@@ -1,4 +1,4 @@
-RAPPORT DÉTAILLÉ SUR LE DATASET "ONLINE RETAIL"
+RAPPORT SUR LE DATASET "ONLINE RETAIL"
 
 Ce document présente une analyse structurelle et contextuelle du jeu de données Online Retail, soulignant son importance pédagogique et ses particularités pour l'analyse de données transactionnelles.
 

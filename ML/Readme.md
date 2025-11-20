@@ -1,4 +1,4 @@
-# Compte rendu : Étude sur la qualité du vin
+# Étude sur la qualité du vin
 
 ## Introduction
 

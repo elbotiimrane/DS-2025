@@ -1,15 +1,15 @@
-Price vs Carat – Relation entre poids et prix
+##Price vs Carat – Relation entre poids et prix
 
 Ce graphique montre une corrélation visuelle forte entre le carat et le prix. On constate que plus le poids du diamant augmente, plus son prix tend à croître de manière non linéaire. Cette progression accélérée révèle un effet de rareté : les diamants lourds ne sont pas simplement plus chers proportionnellement, ils sont survalorisés en raison de leur disponibilité limitée sur le marché. Cela confirme que le prix ne dépend pas uniquement de la matière brute, mais aussi de la perception de rareté et du prestige associé.
 
-Distribution des prix des diamants
+##Distribution des prix des diamants
 
 L’histogramme met en évidence une concentration importante des diamants dans les gammes de prix moyennes, avec une queue étirée vers les prix très élevés. Cette asymétrie traduit une structure typique d’un marché de luxe : une majorité de produits accessibles et une minorité de produits élitistes dont la valeur augmente de manière exponentielle. Ce phénomène illustre la segmentation du marché entre consommation courante et produits de prestige.
 
-Distribution des prix selon la qualité de coupe
+##Distribution des prix selon la qualité de coupe
 
 Ce boxplot révèle que la qualité de coupe influence clairement le prix. Les diamants de type "Ideal" et "Premium" présentent généralement des prix plus élevés et une dispersion plus large. Cela démontre que la valeur d’un diamant ne repose pas uniquement sur ses caractéristiques physiques mesurables, mais aussi sur un critère esthétique fortement valorisé par les consommateurs. Le marché récompense donc la qualité perçue autant que la qualité matérielle.
 
-Matrice de corrélation entre variables numériques
+##Matrice de corrélation entre variables numériques
 
 Cette visualisation permet d’analyser les relations statistiques entre carat, prix, profondeur et table. On observe que le carat est la variable la plus corrélée au prix, ce qui confirme son rôle dominant dans la détermination de la valeur. En revanche, la profondeur et la table présentent des corrélations plus faibles, ce qui indique que leur influence est secondaire comparée au poids. Cela suggère que le pricing des diamants est principalement basé sur des critères visibles et simples pour le client final.

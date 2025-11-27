@@ -1,4 +1,4 @@
-# Compte rendu analytique détaillé – Base de données : Diamonds (Kaggle)
+# Compte rendu analytique détaillé – Base de données : Diamonds 
 
 ## Introduction et contexte
 

@@ -1,1 +1,65 @@
+Aperçu général du dataset (Introduction – section “Présentation des données”)
+
+Voici une version prête à mettre dans ton rapport, propre, professionnelle, et qui passe à l’aise devant un professeur :
+
+Présentation générale du dataset
+
+Le dataset utilisé dans ce projet provient de la base publique Cryptocurrency Historical Prices disponible sur Kaggle. Il regroupe l’historique complet des prix de nombreuses crypto-monnaies depuis leurs dates de création respectives jusqu’aux périodes récentes.
+Ces données ont été collectées à partir de plateformes d’échange majeures et constituent une ressource largement utilisée pour les travaux de data science en finance numérique.
+
+Bien que la base de données couvre un ensemble étendu de crypto-actifs, l’analyse de ce projet se concentre exclusivement sur Bitcoin (BTC), la crypto-monnaie la plus ancienne, la plus liquide et la plus capitalisée du marché. Ce choix permet de travailler sur une série temporelle longue, de haute qualité, et représentative des dynamiques financières du secteur.
+
+Structure générale du dataset
+
+Chaque crypto-monnaie du dataset est représentée sous forme de tableau contenant son historique quotidien. Les observations sont généralement organisées sous la forme suivante :
+
+Date : la date du jour de cotation
+
+Open : prix d’ouverture
+
+High : prix le plus élevé de la journée
+
+Low : prix le plus bas de la journée
+
+Close : prix de clôture
+
+Volume : volume échangé (unités ou USD selon la source)
+
+Market Cap : capitalisation boursière estimée
+
+Ces variables couvrent les indicateurs classiques utilisés en analyse financière et permettent d’étudier :
+
+l’évolution du prix,
+
+la volatilité,
+
+les cycles de marché,
+
+les volumes et comportements des investisseurs.
+
+Dimensions de la base
+
+Le dataset complet contient des données pour plusieurs dizaines de crypto-actifs (Bitcoin, Ethereum, XRP, Litecoin, etc.), chacune représentée par plusieurs années d’historique.
+À l’intérieur de cette base, l’extraction dédiée à Bitcoin constitue une série temporelle de plusieurs milliers de lignes, offrant une profondeur temporelle suffisante pour réaliser :
+
+un travail d’EDA riche (tendances, saisonnalité, volatilité),
+
+des modèles de prévision séries temporelles (ARIMA, LSTM, Prophet),
+
+du feature engineering avancé (retours, volatilité glissante, indicateurs techniques).
+
+Pourquoi Bitcoin a été sélectionné
+
+Le choix de limiter l’étude à Bitcoin repose sur trois raisons majeures :
+
+Données fiables et complètes : Bitcoin est la crypto la plus documentée et possède l’historique le plus long et le plus propre.
+
+Pertinence économique : il sert de référence au marché crypto (“indice du marché numérique”).
+
+Cohérence méthodologique : travailler sur une seule crypto évite la complexité inutile du multiseries et permet une modélisation plus claire et plus robuste.
+
+Objectif de l’analyse
+
+Dans ce projet, Bitcoin servira de cas d’étude pour développer un modèle de prévision financière basé sur les séries temporelles.
+L’objectif final est d’extraire des insights quantitatifs sur l’évolution du marché et d’évaluer la capacité d’un modèle de machine learning à prédire les prix futurs.
 

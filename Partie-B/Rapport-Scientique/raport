@@ -1,65 +1,64 @@
-Aperçu général du dataset (Introduction – section “Présentation des données”)
+# Compte rendu détaillé : Analyse des Cryptomonnaies et Prédiction du Bitcoin
 
-Voici une version prête à mettre dans ton rapport, propre, professionnelle, et qui passe à l’aise devant un professeur :
+## Introduction générale
 
-Présentation générale du dataset
+Les cryptomonnaies représentent une avancée majeure dans le domaine financier et technologique. Depuis l'apparition du Bitcoin en 2009, ces actifs numériques ont transformé les concepts de monnaie, de transaction et de gouvernance économique. Contrairement aux systèmes monétaires traditionnels centralisés, les cryptomonnaies reposent sur des réseaux décentralisés et sécurisés grâce à la technologie de la blockchain. Cette dernière, en tant que registre distribué et immuable, permet la validation des transactions sans besoin de tiers de confiance, tout en augmentant la transparence et la résilience face aux tentatives de manipulation.
 
-Le dataset utilisé dans ce projet provient de la base publique Cryptocurrency Historical Prices disponible sur Kaggle. Il regroupe l’historique complet des prix de nombreuses crypto-monnaies depuis leurs dates de création respectives jusqu’aux périodes récentes.
-Ces données ont été collectées à partir de plateformes d’échange majeures et constituent une ressource largement utilisée pour les travaux de data science en finance numérique.
+L'essor des cryptomonnaies est porté par trois dynamiques principales : la recherche d'alternatives monétaires sécurisées, l'évolution des technologies numériques permettant leur création et gestion, et le développement de l'économie numérique nécessitant des moyens de paiement adaptés aux échanges transfrontaliers. La diversité des cryptomonnaies aujourd'hui, allant du Bitcoin aux plateformes de contrats intelligents comme Ethereum, reflète l'expérimentation continue et l'innovation dans ce secteur.
 
-Bien que la base de données couvre un ensemble étendu de crypto-actifs, l’analyse de ce projet se concentre exclusivement sur Bitcoin (BTC), la crypto-monnaie la plus ancienne, la plus liquide et la plus capitalisée du marché. Ce choix permet de travailler sur une série temporelle longue, de haute qualité, et représentative des dynamiques financières du secteur.
+## Focus sur le Bitcoin
 
-Structure générale du dataset
+Le Bitcoin occupe une place centrale dans l'écosystème des cryptomonnaies. Premier actif numérique créé et le plus capitalisé, il sert d'indicateur de référence pour l'ensemble du marché. Son objectif est de proposer un système de paiement décentralisé permettant des transferts de valeur sans intermédiaire.
 
-Chaque crypto-monnaie du dataset est représentée sous forme de tableau contenant son historique quotidien. Les observations sont généralement organisées sous la forme suivante :
+Sur le plan technique, le Bitcoin utilise le mécanisme de consensus Proof of Work (PoW), où les mineurs sécurisent le réseau en résolvant des problèmes cryptographiques complexes. L'offre maximale de 21 millions d'unités confère au Bitcoin une rareté programmée, le rapprochant d'une réserve de valeur similaire à l'or. Sa volatilité est influencée par des facteurs réglementaires, les comportements spéculatifs du marché, l'innovation technologique et l'adoption institutionnelle.
 
-Date : la date du jour de cotation
+## Base de données utilisée
 
-Open : prix d’ouverture
+L'étude s'appuie sur le dataset "Cryptocurrency Price History" de Kaggle, qui fournit des données historiques complètes sur plusieurs centaines de cryptomonnaies. L'analyse se concentre sur le Bitcoin pour sa longévité, sa liquidité et sa capitalisation dominante. Les données couvrent la totalité de l'histoire du Bitcoin et permettent d'observer les tendances à long terme, les fluctuations de volatilité et les corrélations entre prix et volume de transactions.
 
-High : prix le plus élevé de la journée
+## Préparation et transformation des données
 
-Low : prix le plus bas de la journée
+Les données ont été soigneusement nettoyées : conversion des dates en format approprié, suppression des doublons, traitement des valeurs manquantes par interpolation ou exclusion selon les cas. La cohérence des données a été vérifiée en s'assurant que les prix hauts et bas respectent les contraintes logiques et que les prix de clôture se situent dans l'intervalle approprié.
 
-Close : prix de clôture
+La standardisation des variables numériques a été effectuée via le StandardScaler, permettant de centrer et réduire les données pour des modèles sensibles à l'échelle. Des variables dérivées ont été créées pour enrichir l'analyse : moyennes mobiles à 7, 14 et 30 jours, retards temporels des prix (lags), indicateurs techniques comme RSI et bandes de Bollinger, et extraction de composantes temporelles (jour, mois, trimestre) pour capturer les effets saisonniers.
 
-Volume : volume échangé (unités ou USD selon la source)
+L'ensemble des données a été séparé en ensembles d'entraînement et de test selon une chronologie stricte, et la validation croisée adaptée aux séries temporelles a été mise en place afin d'éviter toute contamination des données futures.
 
-Market Cap : capitalisation boursière estimée
+## Méthodologie de modélisation
 
-Ces variables couvrent les indicateurs classiques utilisés en analyse financière et permettent d’étudier :
+Trois types de modèles ont été comparés :
 
-l’évolution du prix,
+* **Régression linéaire** : modèle simple et interprétable, permettant de mesurer les relations linéaires entre variables explicatives et prix de clôture.
+* **Random Forest** : ensemble d'arbres décisionnels capturant les relations non linéaires et interactions complexes entre variables, avec une estimation naturelle de l'importance des variables.
+* **Gradient Boosting** : construction séquentielle de modèles faibles corrigeant les erreurs précédentes, particulièrement efficace pour détecter des patterns complexes dans des données bruyantes.
 
-la volatilité,
+L'optimisation des hyperparamètres a été réalisée via GridSearchCV. Les performances des modèles ont été évaluées avec plusieurs métriques complémentaires : RMSE, MAE, R² et MAPE.
 
-les cycles de marché,
+## Résultats et analyse
 
-les volumes et comportements des investisseurs.
+Les résultats montrent que le Gradient Boosting offre les meilleures performances, suivi de près par le Random Forest. La régression linéaire, bien que moins performante, fournit une base interprétable utile.
 
-Dimensions de la base
+Les variables les plus déterminantes dans les modèles incluent les prix des jours précédents (Price_1 à Price_7), les moyennes mobiles sur 7 et 30 jours, les bandes de Bollinger et le volume moyen des transactions. L'importance de ces variables confirme la présence de dépendances temporelles et d'autocorrélations significatives.
 
-Le dataset complet contient des données pour plusieurs dizaines de crypto-actifs (Bitcoin, Ethereum, XRP, Litecoin, etc.), chacune représentée par plusieurs années d’historique.
-À l’intérieur de cette base, l’extraction dédiée à Bitcoin constitue une série temporelle de plusieurs milliers de lignes, offrant une profondeur temporelle suffisante pour réaliser :
+L'analyse par périodes révèle que la précision des modèles varie selon la volatilité : lors de périodes de forte volatilité ou de changement de régime, le RMSE augmente, tandis que les périodes stables permettent des prédictions plus précises.
 
-un travail d’EDA riche (tendances, saisonnalité, volatilité),
+## Limites de l'étude
 
-des modèles de prévision séries temporelles (ARIMA, LSTM, Prophet),
+* Les modèles linéaires ne capturent pas les dynamiques non linéaires et les changements de régime.
+* Les modèles Random Forest et Gradient Boosting peuvent interpoler mais ont des limites lors de mouvements extrêmes non observés.
+* Le bruit élevé des séries financières accroît le risque de surapprentissage.
+* Les données ne contiennent pas d'informations macroéconomiques, réglementaires ou sentimentales essentielles.
+* Les modèles peuvent ne pas être robustes face à l'évolution du marché et de l'écosystème Bitcoin.
 
-du feature engineering avancé (retours, volatilité glissante, indicateurs techniques).
+## Conclusion et perspectives
 
-Pourquoi Bitcoin a été sélectionné
+Cette étude confirme la supériorité des méthodes d'ensemble pour la prédiction du Bitcoin et souligne l'importance des variables techniques et des retards temporels. Les performances sont sensibles aux conditions de marché.
 
-Le choix de limiter l’étude à Bitcoin repose sur trois raisons majeures :
+Pour améliorer les analyses futures :
 
-Données fiables et complètes : Bitcoin est la crypto la plus documentée et possède l’historique le plus long et le plus propre.
+* Intégrer des données alternatives (sentiment des réseaux sociaux, données on-chain, indicateurs réglementaires)
+* Explorer des modèles hybrides combinant statistiques et apprentissage automatique
+* Développer des modèles adaptatifs capables de suivre les changements de régime
+* Utiliser des mécanismes d'attention pour mieux capturer les dépendances à long terme
 
-Pertinence économique : il sert de référence au marché crypto (“indice du marché numérique”).
-
-Cohérence méthodologique : travailler sur une seule crypto évite la complexité inutile du multiseries et permet une modélisation plus claire et plus robuste.
-
-Objectif de l’analyse
-
-Dans ce projet, Bitcoin servira de cas d’étude pour développer un modèle de prévision financière basé sur les séries temporelles.
-L’objectif final est d’extraire des insights quantitatifs sur l’évolution du marché et d’évaluer la capacité d’un modèle de machine learning à prédire les prix futurs.
-
+Cette recherche fournit un cadre méthodologique détaillé et complet pour l'analyse quantitative des cryptomonnaies, utile pour les investisseurs et chercheurs souhaitant étudier des actifs numériques complexes et volatils.

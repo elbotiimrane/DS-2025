@@ -1,29 +1,149 @@
-# Rapport sur le Dataset “Online Retail"
+🔥 COMPTE RENDU : Analyse du Dataset “Online Retail”
 
-## Contexte Général
 
-Le dataset **Online Retail** provient du **UCI Machine Learning Repository**, une référence académique pour la diffusion de jeux de données destinés à la recherche et à l’enseignement. Il recense les transactions d’une entreprise de vente en ligne spécialisée dans des produits variés, principalement décoratifs, pour une clientèle large. La période couverte s’étend du **1er décembre 2010 au 9 décembre 2011**, offrant une vision complète de l’activité commerciale sur une année.
+Introduction
 
-Ce dataset est particulièrement intéressant car il reflète fidèlement la réalité du commerce électronique. Il permet d’observer la diversité des produits, les comportements variés des clients, les retours de marchandises, les fluctuations de prix et les différences selon le pays de commande. Chaque ligne correspond à une transaction réelle, offrant ainsi une granularité idéale pour analyser le fonctionnement d’une entreprise e-commerce.
+L’analyse du dataset “Online Retail”, issu du UCI Machine Learning Repository, constitue une étude de cas complète pour comprendre les dynamiques réelles d’un site de commerce électronique. Le jeu de données regroupe plus d’une année de transactions, permettant d’examiner les comportements d’achat, la distribution des produits, la géographie des commandes et les modèles de ventes dans un contexte commercial international. L’objectif de cette étude est de préparer, nettoyer et explorer ces données afin d’en dégager des tendances utiles pour l’analyse marketing et commerciale.
 
-## Objectifs et Intérêt du Dataset
+1. Le Contexte Métier et la Mission
 
-L’objectif principal de ce dataset est de fournir un support pratique pour l’analyse des données transactionnelles. Il permet d’étudier la gestion commerciale, le suivi des ventes, la logistique, l’analyse des comportements clients et la réalisation d’études de marché à l’échelle internationale. Pour les étudiants et débutants, il constitue un excellent outil pour développer des compétences en **nettoyage, structuration et analyse de données**, tandis que pour les analystes expérimentés, il offre un terrain riche pour construire des modèles prédictifs, détecter des anomalies et réaliser des diagnostics approfondis sur l’activité commerciale.
+Le dataset provient d’une entreprise spécialisée dans la vente en ligne de produits décoratifs et d’articles variés. Le contexte métier est directement lié à l’activité e-commerce : gérer les transactions, suivre les clients, analyser la performance des produits et optimiser les ventes.
+La mission assignée dans ce projet consiste à :
 
-## Structure du Dataset
+Inspecter et nettoyer les données brutes afin de les rendre exploitables.
 
-Le dataset comprend plusieurs colonnes essentielles. La colonne **InvoiceNo** identifie chaque transaction de manière unique et permet de regrouper les articles d’une même commande. **StockCode** correspond au code interne de chaque produit, garantissant une identification précise au sein du catalogue. La colonne **Description** contient le nom textuel du produit, offrant une lecture directe de la nature de l’article. La colonne **Quantity** indique le nombre d’unités commandées, ce qui permet d’analyser les volumes d’achat. **InvoiceDate** renseigne la date et l’heure exactes de chaque transaction, facilitant l’étude des tendances temporelles et des périodes de forte activité. **UnitPrice** représente le prix unitaire du produit et permet de calculer la valeur totale des ventes. La colonne **CustomerID** identifie chaque client, offrant la possibilité de suivre les comportements d’achat sur le long terme, même si certaines valeurs sont manquantes. Enfin, **Country** indique le pays de l’acheteur, ce qui permet d’analyser l’activité commerciale selon la localisation géographique.
+Comprendre les patterns d’achat grâce à des analyses exploratoires.
 
-## Nature et Particularités des Données
+Produire des visualisations descriptives autour des produits, des clients et des ventes.
 
-Le dataset contient des milliers de produits et des dizaines de milliers de transactions, ce qui reflète l’activité soutenue et continue d’un site de commerce électronique. Il inclut également des retours ou annulations, visibles à travers des **quantités négatives** ou des factures spécifiques. Ces éléments illustrent le fonctionnement réel d’une boutique en ligne, où les retours, les erreurs et les échanges sont fréquents.
+Structurer les données pour une éventuelle analyse avancée (RFM, clustering, prédiction).
 
-Certaines particularités typiques des bases réelles sont également présentes. On observe des valeurs manquantes dans **CustomerID**, des quantités négatives correspondant à des retours, des prix unitaires nuls ou anormalement élevés, ainsi que des descriptions parfois absentes ou tronquées. Ces caractéristiques montrent que le dataset est **brut** et fidèle à la réalité, obligeant l’utilisateur à gérer le nettoyage, corriger les erreurs et identifier les anomalies, ce qui est représentatif des bases de données réelles.
+Ce projet ne vise pas encore un modèle prédictif supervisé : l’objectif ici est d’établir une base propre et analysée, qui pourra ensuite servir à la modélisation.
 
-## Applications Possibles
+2. Le Code Python (Laboratoire)
 
-Ce dataset peut être utilisé pour créer des tableaux de bord et des rapports commerciaux, analyser les patterns d’achat et les comportements clients, développer des scripts de nettoyage avancés ou encore réaliser des exercices en apprentissage automatique supervisé ou non supervisé. Il permet également de comparer les ventes selon les pays, d’étudier l’évolution temporelle des transactions, de construire des indicateurs métiers et de simuler des systèmes de gestion commerciale. Sa richesse en informations offre un terrain idéal pour comprendre comment structurer, analyser et exploiter des données massives dans un contexte professionnel.
+Le laboratoire Python s’articule autour de quatre blocs essentiels :
 
-## Conclusion
+Chargement des données
+Le dataset est extrait via ucimlrepo puis inspecté à l’aide de head() et info().
+Cette étape confirme la présence de valeurs manquantes, d’anomalies sur les quantités et d’un besoin urgent de nettoyage.
 
-Le dataset **Online Retail** est un exemple complet de données transactionnelles générées par une entreprise de vente en ligne. Sa richesse et ses particularités en font un support idéal pour toutes les étapes du traitement des données : **compréhension, nettoyage, structuration, exploitation et documentation**. Il offre une immersion réaliste dans les problématiques rencontrées par les analystes et les entreprises, telles que la gestion des retours, les anomalies de prix, les valeurs manquantes, la diversité des produits et la multiplicité des clients. L’utilisation de ce dataset constitue un excellent point de départ pour des projets avancés en **analyse de données, systèmes d’information ou modélisation**, tout en développant une approche concrète des données issues du commerce électronique.
+Nettoyage initial
+Les transformations majeures sont :
+
+Conversion de InvoiceDate en format datetime.
+
+Suppression des lignes avec CustomerID ou StockCode manquants.
+
+Filtrage des quantités et prix unitaires négatifs ou nuls.
+
+Calcul de TotalPrice (Quantity × UnitPrice).
+
+Construction d’indicateurs
+Ajout de la variable InvoiceMonth pour permettre une analyse temporelle mensuelle des ventes.
+
+Visualisations
+Création de plusieurs graphiques clés :
+
+Distribution logarithmique des prix unitaires
+
+Classement des pays par volume de transactions
+
+Série temporelle des ventes mensuelles
+
+Top produits générant le plus de revenus
+
+Distribution des quantités vendues
+
+Ce laboratoire permet de transformer un dataset brut en une structure exploitable et visuellement analysée.
+
+3. Analyse Approfondie : Nettoyage (Data Wrangling)
+
+Le dataset brut présente plusieurs problèmes typiques des données réelles : quantités négatives (retours), prix aberrants, valeurs manquantes.
+Le nettoyage a permis de :
+
+Réduire fortement le bruit : suppression de toutes les lignes inutilisables.
+
+Rétablir la cohérence métier : Quantity > 0 et UnitPrice > 0 garantissent l’analyse de ventes réelles.
+
+Éliminer les biais : CustomerID manquant implique impossibilité d’analyses clients fiables.
+
+Créer une variable clé : TotalPrice permettant d’effectuer des analyses financières.
+
+On note que le nettoyage réduit significativement la taille du dataset, ce qui montre à quel point les données commerciales peuvent être imparfaites dans leur état brut.
+
+4. Analyse Approfondie : Exploration (EDA)
+
+L’exploration exploratoire met en lumière plusieurs enseignements :
+
+Les prix unitaires sont extrêmement asymétriques, justifiant l’utilisation d’une transformation logarithmique pour stabiliser la distribution.
+
+Certains pays dominent largement les transactions, notamment le Royaume-Uni, ce qui suggère un marché très concentré.
+
+Les tendances mensuelles révèlent des pics saisonniers, cohérents avec les ventes saisonnières d’articles décoratifs (fin d’année notamment).
+
+Une faible proportion de produits génère une forte part du revenu, confirmant la loi de Pareto dans le e-commerce.
+
+L’EDA met en évidence des comportements typiques du marché digital : forte long tail de produits, importance des best-sellers, saisonnalité forte.
+
+5. Analyse Approfondie : Méthodologie (Split)
+
+Dans ce projet, aucun modèle prédictif supervisé n’a été entraîné, donc aucun split Train/Test n’a été mis en place.
+Cependant, si le dataset devait servir à une modélisation en Machine Learning, la méthodologie de split serait la suivante :
+
+Split temporel (Time Series Split) et non random, car les données sont chronologiques.
+
+Entraînement sur les mois 2010–2011, test sur la fin 2011.
+
+Validation croisée par blocs temporels pour éviter les fuites de données.
+
+Cette précision méthodologique est importante car un simple train_test_split serait incorrect compte tenu de la structure temporelle des transactions.
+
+6. Focus Théorique : L’Analyse Descriptive (pas d’algorithme ML utilisé)
+
+Dans ce projet, aucun algorithme de Machine Learning n’a été appliqué.
+Le focus théorique se concentre donc sur l’analyse descriptive et les concepts associés :
+
+Distribution : comprendre les formes des variables (skewness, outliers).
+
+Séries temporelles : construction d’indicateurs mensuels.
+
+Analyse géographique : concentration par pays.
+
+Analyse produit : identification des best-sellers.
+
+Si un modèle devait être intégré plus tard, le choix le plus cohérent serait :
+
+Clustering (KMeans ou HDBSCAN) pour segmenter les clients
+
+Random Forest pour prédire des patterns d’achat ou détecter des anomalies
+
+Apriori pour analyser les associations de produits
+
+Mais ce n’était pas l’objectif de ce projet.
+
+7. Analyse Approfondie : Évaluation (L’Heure de Vérité)
+
+Dans un projet sans apprentissage automatique, l’évaluation ne porte pas sur des métriques de ML mais sur :
+
+La qualité du nettoyage : les anomalies ont-elles été correctement traitées ?
+
+La pertinence des visualisations : permettent-elles de conclure ?
+
+La cohérence métier : les insights reflètent-ils la réalité e-commerce ?
+
+Les visualisations montrent clairement :
+
+des distributions asymétriques,
+
+des ventes très concentrées,
+
+une saisonnalité forte,
+
+des comportements clients hétérogènes.
+
+L’analyse est donc fiable, cohérente, et exploitée correctement pour un contexte débutant–intermédiaire.
+
+Conclusion du Projet
+
+Le projet Online Retail a permis de transformer un dataset brut en un ensemble structuré, nettoyé et analysé de manière professionnelle. Cette étude met en évidence les défis classiques des données e-commerce (retours, valeurs aberrantes, données manquantes) ainsi que les grandes tendances du marché (saisonnalité, concentration des produits, domination géographique). L’analyse descriptive constitue une base solide pour toute extension future vers des modèles prédictifs tels que le clustering clients ou l’analyse des paniers. Le travail réalisé prépare efficacement le terrain pour une modélisation avancée et offre une compréhension approfondie d’un dataset commercial réel.

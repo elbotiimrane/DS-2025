@@ -1,1 +1,45 @@
+Histogrammes avec courbes KDE (Kernel Density Estimate) :
 
+Distribution of High
+
+Montre la distribution des prix les plus hauts atteints par le Bitcoin chaque jour.
+
+La majorité des valeurs se concentre autour de 0–1 (après normalisation ou transformation), avec quelques valeurs beaucoup plus élevées, ce qui crée une distribution très asymétrique à droite.
+
+La courbe KDE confirme cette concentration sur les petites valeurs et montre la queue longue vers les prix plus élevés.
+
+Distribution of Low
+
+Distribution des prix les plus bas atteints chaque jour.
+
+Similaire à la distribution des "High", fortement concentrée sur de faibles valeurs avec une longue queue vers le haut.
+
+Cela reflète la volatilité des prix du Bitcoin.
+
+Distribution of Open
+
+Distribution des prix d’ouverture journaliers.
+
+La majorité des ouvertures sont proches de petites valeurs, avec quelques journées présentant des prix très élevés, ce qui indique quelques extrêmes significatifs.
+
+Distribution of Close
+
+Distribution des prix de clôture journaliers.
+
+Comporte la même asymétrie que les autres prix (High, Low, Open) avec une longue queue vers le haut, ce qui est typique des données financières normalisées ou transformées.
+
+Distribution of Volume
+
+Montre la distribution du volume d’échanges quotidien.
+
+Concentration très élevée autour de petites valeurs, mais quelques journées avec des volumes exceptionnellement élevés (outliers).
+
+Distribution fortement asymétrique à droite, typique des données de trading.
+
+Distribution of Marketcap
+
+Montre la capitalisation boursière quotidienne du Bitcoin.
+
+La majorité des valeurs sont faibles avec une longue queue vers des valeurs très élevées.
+
+Indique que quelques périodes représentent une part importante de la capitalisation totale (pics significatifs).
